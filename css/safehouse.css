@@ -1,0 +1,914 @@
+/* Reset default browser styles to ensure consistent appearance across browsers */
+* {
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Set the base font and background for the entire page */
+body {
+  font-family: "Inter", sans-serif; /* Use Inter font as the primary font family */
+  background-color: #f8f9fa; /* Light background color */
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+  overflow-x: hidden; /* Hide horizontal scrollbar to prevent unwanted scrolling */
+  color: #333333; /* Dark gray text color for better contrast */
+  line-height: 1.6; /* Improved line height for readability */
+}
+
+/* Main container that holds all page content */
+.container {
+  width: 100%; /* Make container take full width of the viewport */
+  min-height: 100vh; /* Ensure container takes at least full viewport height */
+  position: relative; /* Set positioning context for child elements */
+}
+
+/* Header section styling with fixed positioning at the top */
+.page-header {
+  position: fixed; /* Fix header at the top of the viewport */
+  top: 0; /* Position at the very top */
+  left: 0; /* Align to the left edge */
+  right: 0; /* Extend to the right edge */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space logo and navigation apart */
+  align-items: center; /* Vertically center the logo and navigation */
+  padding: 20px 40px; /* Add padding: 20px top/bottom, 40px left/right */
+  z-index: 1000; /* Ensure header appears above other content */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Add blur effect for modern glass-like appearance */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Heart animation for logo */
+.image-heart {
+  animation: heartbeat 2s ease-in-out infinite;
+  width: 65px;
+  height: 65px;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  right: -25%;
+  top: 0;
+  left: -25%;
+}
+
+/* Logo container styling */
+.logo {
+  display: flex; /* Use flexbox for logo layout */
+  align-items: center; /* Vertically center logo elements */
+  gap: 15px; /* Space between heart icon and text */
+}
+
+/* Logo text container */
+.logo-text {
+  display: flex; /* Use flexbox for text layout */
+  flex-direction: column; /* Stack text vertically */
+  color: #333333; /* Dark gray text color */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 14px; /* Font size for logo text */
+  line-height: 1.2; /* Tight line spacing */
+  letter-spacing: 1px; /* Add letter spacing for elegance */
+}
+
+/* Navigation menu styling */
+.main-nav ul {
+  display: flex; /* Use flexbox for horizontal navigation */
+  list-style: none; /* Remove default list bullets */
+  gap: 40px; /* Space between navigation items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Individual navigation link styling */
+.main-nav a {
+  color: #333333; /* Dark gray text color for navigation links */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 16px; /* Font size for navigation */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+  position: relative; /* Set positioning context for hover effects */
+  padding: 8px 12px; /* Add padding for better touch targets */
+  border-radius: 6px; /* Rounded corners for better accessibility */
+}
+
+/* Active navigation link styling */
+.main-nav a.active {
+  color: #ff6b6b; /* Red color for active link */
+  background-color: rgba(255, 107, 107, 0.1); /* Light red background */
+}
+
+/* Hover effect for navigation links */
+.main-nav a:hover {
+  color: #ff6b6b; /* Red color on hover */
+  background-color: rgba(255, 107, 107, 0.05); /* Very light red background */
+}
+
+/* Underline effect on hover using pseudo-element */
+.main-nav a::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  bottom: -5px; /* Position below the text */
+  left: 0; /* Start from left */
+  width: 0; /* Start with zero width */
+  height: 2px; /* Underline height */
+  background-color: #ff6b6b; /* Red underline color */
+  transition: width 0.3s ease; /* Smooth width transition */
+}
+
+/* Expand underline on hover */
+.main-nav a:hover::after {
+  width: 100%; /* Full width on hover */
+}
+
+/* Hero section styling */
+.hero-section {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center content */
+  justify-content: space-between; /* Space content and graphics apart */
+  min-height: 100vh; /* Take full viewport height */
+  padding: 0 80px; /* Add horizontal padding */
+  padding-top: 100px; /* Add top padding to account for fixed header */
+  position: relative; /* Set positioning context */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Subtle gradient background */
+}
+
+/* Left side content container */
+.hero-content {
+  flex: 1; /* Take available space */
+  max-width: 600px; /* Limit maximum width */
+  z-index: 10; /* Ensure content appears above graphics */
+}
+
+/* Main heading styling */
+.hero-heading {
+  font-family: "Neuton", serif; /* Use Neuton font for elegant typography */
+  font-size: 64px; /* Large font size for impact */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  line-height: 1.1; /* Tight line spacing */
+  margin-bottom: 30px; /* Space below the heading */
+  letter-spacing: 2px; /* Add letter spacing for elegance */
+}
+
+/* First line of the heading */
+.heading-line-1 {
+  display: block; /* Make it a block element */
+  margin-bottom: 10px; /* Space between lines */
+}
+
+/* Second line of the heading */
+.heading-line-2 {
+  display: block; /* Make it a block element */
+  color: #ff6b6b; /* Red color for second line */
+}
+
+/* Subtitle text styling */
+.hero-subtitle {
+  font-family: "Inter", sans-serif; /* Use Inter font for subtitle */
+  font-size: 18px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  line-height: 1.6; /* Comfortable line spacing */
+  margin-bottom: 40px; /* Space below subtitle */
+  max-width: 500px; /* Limit width for better readability */
+}
+
+/* Hero stats container */
+.hero-stats {
+  display: flex; /* Use flexbox for layout */
+  gap: 40px; /* Space between stat items */
+  margin-top: 40px; /* Space above stats */
+}
+
+/* Individual stat item */
+.stat-item {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack number and label vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text */
+}
+
+/* Stat number styling */
+.stat-number {
+  font-family: "Neuton", serif; /* Use Neuton font */
+  font-size: 36px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #ff6b6b; /* Red color */
+  line-height: 1; /* Tight line spacing */
+  margin-bottom: 8px; /* Space below number */
+}
+
+/* Stat label styling */
+.stat-label {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #666666; /* Medium gray text color */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+/* Right side graphics section */
+.hero-graphics {
+  flex: 1; /* Take available space */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center graphics */
+  justify-content: center; /* Horizontally center graphics */
+  position: relative; /* Set positioning context */
+}
+
+/* Accessibility icons container */
+.accessibility-icons {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack icons vertically */
+  gap: 30px; /* Space between icons */
+  position: relative; /* Set positioning context */
+}
+
+/* Individual accessibility icon */
+.icon-wheelchair,
+.icon-heart,
+.icon-hands {
+  width: 80px; /* Icon width */
+  height: 80px; /* Icon height */
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff0000 100%); /* Red gradient background */
+  border-radius: 50%; /* Make it circular */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  color: #ffffff; /* White icon color */
+  font-size: 32px; /* Large icon size */
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3); /* Red shadow */
+  animation: float 3s ease-in-out infinite; /* Floating animation */
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+/* Hover effect for icons */
+.icon-wheelchair:hover,
+.icon-heart:hover,
+.icon-hands:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Staggered animation delays for icons */
+.icon-wheelchair {
+  animation-delay: 0s; /* No delay */
+}
+
+.icon-heart {
+  animation-delay: 0.5s; /* 0.5s delay */
+}
+
+.icon-hands {
+  animation-delay: 1s; /* 1s delay */
+}
+
+/* Search section styling */
+.search-section {
+  padding: 60px 80px; /* Add padding */
+  background-color: #ffffff; /* White background */
+  border-bottom: 1px solid #e9ecef; /* Light border */
+}
+
+/* Search container */
+.search-container {
+  max-width: 1200px; /* Limit maximum width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Search box styling */
+.search-box {
+  position: relative; /* Set positioning context */
+  margin-bottom: 30px; /* Space below search box */
+}
+
+/* Search icon */
+.search-box i {
+  position: absolute; /* Position absolutely */
+  left: 20px; /* Position from left */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Center precisely */
+  color: #999999; /* Light gray color */
+  font-size: 18px; /* Medium font size */
+}
+
+/* Search input styling */
+#searchInput {
+  width: 100%; /* Take full width */
+  padding: 18px 20px 18px 60px; /* Add padding with space for icon */
+  border: 2px solid #e9ecef; /* Light gray border */
+  border-radius: 25px; /* Rounded corners */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #333333; /* Dark gray text color */
+  background-color: #ffffff; /* White background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Focus state for search input */
+#searchInput:focus {
+  outline: none; /* Remove default outline */
+  border-color: #ff6b6b; /* Red border on focus */
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1); /* Red glow on focus */
+}
+
+/* Placeholder styling */
+#searchInput::placeholder {
+  color: #999999; /* Light gray placeholder text */
+}
+
+/* Filter buttons container */
+.filter-buttons {
+  display: flex; /* Use flexbox for layout */
+  gap: 15px; /* Space between buttons */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Filter button styling */
+.filter-btn {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center vertically */
+  gap: 8px; /* Space between icon and text */
+  padding: 12px 20px; /* Add padding */
+  border: 2px solid #e9ecef; /* Light gray border */
+  border-radius: 25px; /* Rounded corners */
+  background-color: #ffffff; /* White background */
+  color: #666666; /* Medium gray text color */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 600; /* Semi-bold font weight */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+/* Active filter button */
+.filter-btn.active {
+  background-color: #ff6b6b; /* Red background */
+  color: #ffffff; /* White text color */
+  border-color: #ff6b6b; /* Red border */
+}
+
+/* Hover effect for filter buttons */
+.filter-btn:hover:not(.active) {
+  border-color: #ff6b6b; /* Red border on hover */
+  color: #ff6b6b; /* Red text on hover */
+  background-color: rgba(255, 107, 107, 0.05); /* Very light red background */
+}
+
+/* Safe houses section styling */
+.safehouses-section {
+  padding: 60px 80px; /* Add padding */
+  background-color: #f8f9fa; /* Light background */
+}
+
+/* Section header */
+.section-header {
+  text-align: center; /* Center text */
+  margin-bottom: 50px; /* Space below header */
+}
+
+/* Section title */
+.section-title {
+  font-family: "Neuton", serif; /* Use Neuton font */
+  font-size: 48px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 15px; /* Space below title */
+  letter-spacing: 2px; /* Add letter spacing */
+}
+
+/* Section subtitle */
+.section-subtitle {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 18px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  max-width: 600px; /* Limit width for better readability */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Safe houses grid */
+.safehouses-grid {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid columns */
+  gap: 30px; /* Space between grid items */
+  max-width: 1200px; /* Maximum width of grid */
+  margin: 0 auto; /* Center grid horizontally */
+}
+
+/* Safe house card styling */
+.safehouse-card {
+  background-color: #ffffff; /* White background */
+  border-radius: 20px; /* Rounded corners */
+  padding: 30px; /* Add padding inside card */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  cursor: pointer; /* Pointer cursor on hover */
+  border: 2px solid transparent; /* Transparent border */
+  position: relative; /* Set positioning context */
+  overflow: hidden; /* Hide overflow for hover effects */
+}
+
+/* Hover effect for safe house cards */
+.safehouse-card:hover {
+  transform: translateY(-10px); /* Move up on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+  border-color: #ff6b6b; /* Red border on hover */
+}
+
+/* Card header */
+.card-header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space title and status apart */
+  align-items: flex-start; /* Align to top */
+  margin-bottom: 20px; /* Space below header */
+}
+
+/* Card title */
+.card-title {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 24px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 8px; /* Space below title */
+  line-height: 1.3; /* Comfortable line spacing */
+}
+
+/* Card location */
+.card-location {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center vertically */
+  gap: 8px; /* Space between icon and text */
+}
+
+/* Card status badge */
+.card-status {
+  background-color: #28a745; /* Green background */
+  color: #ffffff; /* White text color */
+  padding: 6px 12px; /* Add padding */
+  border-radius: 15px; /* Rounded corners */
+  font-size: 12px; /* Small font size */
+  font-weight: 600; /* Semi-bold font weight */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+/* Card features */
+.card-features {
+  margin-bottom: 25px; /* Space below features */
+}
+
+/* Features title */
+.features-title {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+  margin-bottom: 12px; /* Space below title */
+}
+
+/* Features list */
+.features-list {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 8px; /* Space between features */
+}
+
+/* Individual feature tag */
+.feature-tag {
+  background-color: #f8f9fa; /* Light background */
+  color: #666666; /* Medium gray text color */
+  padding: 6px 12px; /* Add padding */
+  border-radius: 15px; /* Rounded corners */
+  font-size: 12px; /* Small font size */
+  font-weight: 500; /* Medium font weight */
+  border: 1px solid #e9ecef; /* Light border */
+}
+
+/* Card contact */
+.card-contact {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center vertically */
+  gap: 12px; /* Space between icon and text */
+  padding: 15px; /* Add padding */
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 20px; /* Space below contact */
+}
+
+/* Contact icon */
+.contact-icon {
+  color: #ff6b6b; /* Red color */
+  font-size: 18px; /* Medium font size */
+}
+
+/* Contact text */
+.contact-text {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+}
+
+/* Card actions */
+.card-actions {
+  display: flex; /* Use flexbox for layout */
+  gap: 12px; /* Space between buttons */
+}
+
+/* Action button */
+.action-btn {
+  flex: 1; /* Take available space */
+  padding: 12px 20px; /* Add padding */
+  border: 2px solid #ff6b6b; /* Red border */
+  border-radius: 10px; /* Rounded corners */
+  background-color: transparent; /* Transparent background */
+  color: #ff6b6b; /* Red text color */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 600; /* Semi-bold font weight */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+/* Primary action button */
+.action-btn.primary {
+  background-color: #ff6b6b; /* Red background */
+  color: #ffffff; /* White text color */
+}
+
+/* Hover effect for action buttons */
+.action-btn:hover {
+  transform: translateY(-2px); /* Slight upward movement */
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3); /* Red shadow on hover */
+}
+
+/* Loading state styling */
+.loading-state {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  padding: 60px 20px; /* Add padding */
+  text-align: center; /* Center text */
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 50px; /* Spinner width */
+  height: 50px; /* Spinner height */
+  border: 4px solid #f3f3f3; /* Light gray border */
+  border-top: 4px solid #ff6b6b; /* Red top border */
+  border-radius: 50%; /* Make it circular */
+  animation: spin 1s linear infinite; /* Spin animation */
+  margin-bottom: 20px; /* Space below spinner */
+}
+
+/* Loading text */
+.loading-state p {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+}
+
+/* Empty state styling */
+.empty-state {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  padding: 80px 20px; /* Add padding */
+  text-align: center; /* Center text */
+}
+
+/* Empty state icon */
+.empty-state i {
+  font-size: 64px; /* Large icon size */
+  color: #999999; /* Light gray color */
+  margin-bottom: 20px; /* Space below icon */
+}
+
+/* Empty state heading */
+.empty-state h3 {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 24px; /* Large font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 10px; /* Space below heading */
+}
+
+/* Empty state text */
+.empty-state p {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  max-width: 400px; /* Limit width for better readability */
+}
+
+/* Accessibility info section */
+.accessibility-info {
+  padding: 80px 80px; /* Add padding */
+  background-color: #ffffff; /* White background */
+  border-top: 1px solid #e9ecef; /* Light border */
+}
+
+/* Info container */
+.info-container {
+  max-width: 1200px; /* Limit maximum width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Info heading */
+.info-container h3 {
+  font-family: "Neuton", serif; /* Use Neuton font */
+  font-size: 36px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  text-align: center; /* Center text */
+  margin-bottom: 50px; /* Space below heading */
+  letter-spacing: 2px; /* Add letter spacing */
+}
+
+/* Features list for accessibility info */
+.accessibility-info .features-list {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
+  gap: 30px; /* Space between grid items */
+}
+
+/* Feature item for accessibility info */
+.accessibility-info .feature-item {
+  display: flex; /* Use flexbox for layout */
+  align-items: flex-start; /* Align to top */
+  gap: 20px; /* Space between icon and content */
+  padding: 30px; /* Add padding */
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 15px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+/* Hover effect for feature items */
+.accessibility-info .feature-item:hover {
+  transform: translateY(-5px); /* Move up on hover */
+}
+
+/* Feature icon for accessibility info */
+.accessibility-info .feature-item i {
+  font-size: 32px; /* Large icon size */
+  color: #ff6b6b; /* Red color */
+  margin-top: 5px; /* Small top margin */
+}
+
+/* Feature content */
+.accessibility-info .feature-item div h4 {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 18px; /* Medium font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 8px; /* Space below heading */
+}
+
+/* Feature description */
+.accessibility-info .feature-item div p {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  line-height: 1.5; /* Comfortable line spacing */
+}
+
+/* Footer styling */
+.page-footer {
+  background-color: #333333; /* Dark background */
+  color: #ffffff; /* White text color */
+  padding: 40px 80px; /* Add padding */
+  text-align: center; /* Center text */
+}
+
+/* Footer content */
+.footer-content {
+  max-width: 1200px; /* Limit maximum width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Footer text */
+.footer-content p {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 400; /* Regular font weight */
+  margin-bottom: 20px; /* Space below text */
+}
+
+/* Footer links */
+.footer-links {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center horizontally */
+  gap: 30px; /* Space between links */
+}
+
+/* Footer link */
+.footer-links a {
+  color: #ffffff; /* White text color */
+  text-decoration: none; /* Remove underline */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Small font size */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for footer links */
+.footer-links a:hover {
+  color: #ff6b6b; /* Red color on hover */
+}
+
+/* Animations */
+@keyframes heartbeat {
+  0% {
+    transform: rotate(0deg) scale(1);
+  } /* Normal size */
+  50% {
+    transform: rotate(0deg) scale(1.05);
+  } /* Slightly larger */
+  100% {
+    transform: rotate(0deg) scale(1);
+  } /* Back to normal */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  } /* Normal position */
+  50% {
+    transform: translateY(-10px);
+  } /* Move up */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  } /* Start position */
+  100% {
+    transform: rotate(360deg);
+  } /* Full rotation */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  /* Adjust header padding for mobile */
+  .page-header {
+    padding: 15px 20px; /* Reduce padding on mobile */
+  }
+
+  /* Adjust navigation gap for mobile */
+  .main-nav ul {
+    gap: 20px; /* Reduce gap between nav items */
+  }
+
+  /* Adjust hero section layout for mobile */
+  .hero-section {
+    flex-direction: column; /* Stack content vertically */
+    padding: 0 20px; /* Reduce padding */
+    text-align: center; /* Center text */
+    min-height: auto; /* Remove full height */
+    padding-top: 120px; /* Add top padding */
+    padding-bottom: 60px; /* Add bottom padding */
+  }
+
+  /* Adjust heading size for mobile */
+  .hero-heading {
+    font-size: 48px; /* Smaller font size */
+  }
+
+  /* Adjust hero stats for mobile */
+  .hero-stats {
+    justify-content: center; /* Center stats */
+    gap: 30px; /* Reduce gap */
+  }
+
+  /* Adjust accessibility icons for mobile */
+  .accessibility-icons {
+    flex-direction: row; /* Stack horizontally */
+    justify-content: center; /* Center horizontally */
+    gap: 20px; /* Reduce gap */
+    margin-top: 40px; /* Add top margin */
+  }
+
+  /* Adjust icon size for mobile */
+  .icon-wheelchair,
+  .icon-heart,
+  .icon-hands {
+    width: 60px; /* Smaller width */
+    height: 60px; /* Smaller height */
+    font-size: 24px; /* Smaller icon size */
+  }
+
+  /* Adjust search section for mobile */
+  .search-section {
+    padding: 40px 20px; /* Reduce padding */
+  }
+
+  /* Adjust filter buttons for mobile */
+  .filter-buttons {
+    justify-content: center; /* Center buttons */
+  }
+
+  /* Adjust safe houses section for mobile */
+  .safehouses-section {
+    padding: 40px 20px; /* Reduce padding */
+  }
+
+  /* Adjust section title for mobile */
+  .section-title {
+    font-size: 36px; /* Smaller font size */
+  }
+
+  /* Adjust safe houses grid for mobile */
+  .safehouses-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 20px; /* Reduce gap */
+  }
+
+  /* Adjust accessibility info for mobile */
+  .accessibility-info {
+    padding: 60px 20px; /* Reduce padding */
+  }
+
+  /* Adjust info heading for mobile */
+  .info-container h3 {
+    font-size: 28px; /* Smaller font size */
+  }
+
+  /* Adjust accessibility features grid for mobile */
+  .accessibility-info .features-list {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 20px; /* Reduce gap */
+  }
+
+  /* Adjust footer for mobile */
+  .page-footer {
+    padding: 30px 20px; /* Reduce padding */
+  }
+
+  /* Adjust footer links for mobile */
+  .footer-links {
+    flex-direction: column; /* Stack vertically */
+    gap: 15px; /* Reduce gap */
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #ff6b6b; /* Red outline for focus */
+  outline-offset: 2px; /* Space between element and outline */
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute; /* Position absolutely */
+  top: -40px; /* Hide above viewport */
+  left: 6px; /* Position from left */
+  background: #ff6b6b; /* Red background */
+  color: white; /* White text */
+  padding: 8px; /* Add padding */
+  text-decoration: none; /* Remove underline */
+  border-radius: 4px; /* Rounded corners */
+  z-index: 1000; /* High z-index */
+}
+
+/* Show skip link on focus */
+.skip-link:focus {
+  top: 6px; /* Show in viewport */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .safehouse-card {
+    border: 2px solid #000000; /* Black border for high contrast */
+  }
+  
+  .filter-btn {
+    border: 2px solid #000000; /* Black border for high contrast */
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important; /* Disable animations */
+    animation-iteration-count: 1 !important; /* Single iteration */
+    transition-duration: 0.01ms !important; /* Disable transitions */
+  }
+}

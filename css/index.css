@@ -1,0 +1,521 @@
+/* Reset default browser styles to ensure consistent appearance across browsers */
+* {
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Set the base font and background for the entire page */
+body {
+  font-family: "Inter", sans-serif; /* Use Inter font as the primary font family */
+  background-color: #f8f9fa; /* Light background color */
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+  overflow-x: hidden; /* Hide horizontal scrollbar to prevent unwanted scrolling */
+}
+
+/* Main container that holds all page content */
+.container {
+  width: 100%; /* Make container take full width of the viewport */
+  min-height: 100vh; /* Ensure container takes at least full viewport height */
+  position: relative; /* Set positioning context for child elements */
+}
+
+/* Video background styling */
+#backgroundVideo {
+  position: fixed; /* Fix video in place */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  width: 100%; /* Take full width */
+  height: 100%; /* Take full height */
+  object-fit: cover; /* Cover the entire viewport */
+  z-index: -2; /* Place behind all content */
+  opacity: 0.3; /* Make video semi-transparent */
+}
+
+/* Header section styling with fixed positioning at the top */
+.page-header {
+  position: fixed; /* Fix header at the top of the viewport */
+  top: 0; /* Position at the very top */
+  left: 0; /* Align to the left edge */
+  right: 0; /* Extend to the right edge */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space logo and navigation apart */
+  align-items: center; /* Vertically center the logo and navigation */
+  padding: 20px 40px; /* Add padding: 20px top/bottom, 40px left/right */
+  z-index: 1000; /* Ensure header appears above other content */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Semi-transparent white background */
+  backdrop-filter: blur(
+    10px
+  ); /* Add blur effect for modern glass-like appearance */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.image-heart {
+  animation: heartbeat 2s ease-in-out infinite;
+  width: 65px;
+  height: 65px;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  right: -25%;
+  top: 0;
+  left: -25%;
+}
+
+/* Logo container styling */
+.logo {
+  display: flex; /* Use flexbox for logo layout */
+  align-items: center; /* Vertically center logo elements */
+  gap: 15px; /* Space between heart icon and text */
+}
+
+
+/* Logo text container */
+.logo-text {
+  display: flex; /* Use flexbox for text layout */
+  flex-direction: column; /* Stack text vertically */
+  color: #333333; /* Dark gray text color */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 14px; /* Font size for logo text */
+  line-height: 1.2; /* Tight line spacing */
+  letter-spacing: 1px; /* Add letter spacing for elegance */
+}
+
+/* Navigation menu styling */
+.main-nav ul {
+  display: flex; /* Use flexbox for horizontal navigation */
+  list-style: none; /* Remove default list bullets */
+  gap: 40px; /* Space between navigation items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Individual navigation link styling */
+.main-nav a {
+  color: #333333; /* Dark gray text color for navigation links */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 16px; /* Font size for navigation */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+  position: relative; /* Set positioning context for hover effects */
+}
+
+/* Hover effect for navigation links */
+.main-nav a:hover {
+  color: #ff6b6b; /* Red color on hover */
+}
+
+/* Underline effect on hover using pseudo-element */
+.main-nav a::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  bottom: -5px; /* Position below the text */
+  left: 0; /* Start from left */
+  width: 0; /* Start with zero width */
+  height: 2px; /* Underline height */
+  background-color: #ff6b6b; /* Red underline color */
+  transition: width 0.3s ease; /* Smooth width transition */
+}
+
+/* Expand underline on hover */
+.main-nav a:hover::after {
+  width: 100%; /* Full width on hover */
+}
+
+/* Hero section containing main content and graphics */
+.hero-section {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center content */
+  justify-content: space-between; /* Space content and graphics apart */
+  min-height: 100vh; /* Take full viewport height */
+  padding: 0 80px; /* Add horizontal padding */
+  padding-top: 100px; /* Add top padding to account for fixed header */
+  position: relative; /* Set positioning context */
+}
+
+/* Left side content container */
+.hero-content {
+  flex: 1; /* Take available space */
+  max-width: 500px; /* Limit maximum width */
+  z-index: 10; /* Ensure content appears above graphics */
+}
+
+/* Align hero buttons */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* Main heading styling */
+.hero-heading {
+  font-family: "Neuton", serif; /* Use Neuton font for elegant typography */
+  font-size: 64px; /* Large font size for impact */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  line-height: 1.1; /* Tight line spacing */
+  margin-bottom: 30px; /* Space below the heading */
+  letter-spacing: 2px; /* Add letter spacing for elegance */
+}
+
+/* First line of the heading */
+.heading-line-1 {
+  display: block; /* Make it a block element */
+  margin-bottom: 10px; /* Space between lines */
+}
+
+/* Second line of the heading */
+.heading-line-2 {
+  display: block; /* Make it a block element */
+}
+
+/* Subtitle text styling */
+.hero-subtitle {
+  font-family: "Inter", sans-serif; /* Use Inter font for subtitle */
+  font-size: 18px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  line-height: 1.6; /* Comfortable line spacing */
+  margin-bottom: 40px; /* Space below subtitle */
+  font-style: italic; /* Italic style for elegance */
+  max-width: 400px; /* Limit width for better readability */
+}
+
+/* Register button styling */
+.register-button {
+  background-color: #ffffff; /* White background */
+  color: #333333; /* Dark gray text color */
+  border: 2px solid #333333; /* Dark gray border */
+  border-radius: 25px; /* Rounded corners */
+  padding: 15px 40px; /* Padding: 15px top/bottom, 40px left/right */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Font size */
+  font-weight: 600; /* Semi-bold font weight */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 2px; /* Letter spacing for elegance */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  position: relative; /* Set positioning context */
+  overflow: hidden; /* Hide overflow for hover effects */
+}
+
+/* Hover effect for register button */
+.register-button:hover {
+  background-color: #333333; /* Dark gray background on hover */
+  color: #ffffff; /* White text on hover */
+  transform: translateY(-2px); /* Slight upward movement */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Active state for register button */
+.register-button:active {
+  transform: translateY(0); /* Return to original position when clicked */
+}
+
+.image {
+  animation: heartbeat 2s ease-in-out infinite;
+  width: 375px;
+  height: 375px;
+  background-color: inherit;
+}
+
+/* About Us section styling */
+.about-section {
+  padding: 100px 80px; /* Add padding: 100px top/bottom, 80px left/right */
+  background-color: #ffffff; /* White background */
+  text-align: center; /* Center all text */
+}
+
+/* About Us heading */
+.about-heading {
+  font-family: "Neuton", serif; /* Use Neuton font */
+  font-size: 48px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 30px; /* Space below heading */
+  letter-spacing: 2px; /* Add letter spacing */
+}
+
+/* About Us description */
+.about-description {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 20px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  line-height: 1.6; /* Comfortable line spacing */
+  margin-bottom: 60px; /* Space below description */
+  max-width: 800px; /* Limit width for better readability */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+
+/* Features grid container */
+.features-grid {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(350px, 1fr)
+  ); /* Responsive grid columns */
+  gap: 40px; /* Space between grid items */
+  max-width: 1200px; /* Maximum width of grid */
+  margin: 0 auto; /* Center grid horizontally */
+}
+
+/* Individual feature card */
+.feature-card {
+  background-color: #ffffff; /* White background */
+  padding: 40px 30px; /* Add padding: 40px top/bottom, 30px left/right */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add shadow */
+  text-align: center; /* Center text */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for feature cards */
+.feature-card:hover {
+  transform: translateY(-10px); /* Move up on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+}
+
+/* Feature icon container */
+.feature-icon {
+  width: 80px; /* Icon width */
+  height: 80px; /* Icon height */
+  margin: 0 auto 20px; /* Center horizontally and add bottom margin */
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 50%; /* Make it circular */
+}
+
+/* Feature title */
+.feature-title {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 24px; /* Large font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 15px; /* Space below title */
+}
+
+/* Feature description */
+.feature-description {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #666666; /* Medium gray text color */
+  line-height: 1.6; /* Comfortable line spacing */
+}
+
+/* Icon styles for feature cards */
+.blood-drops-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  background: linear-gradient(
+    135deg,
+    #ff6b6b 0%,
+    #ff0000 100%
+  ); /* Red gradient */
+  border-radius: 50%; /* Make it circular */
+  position: relative; /* Set positioning context */
+}
+
+.blood-drops-icon::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  top: -10px; /* Position above */
+  right: -5px; /* Position to the right */
+  width: 20px; /* Smaller drop width */
+  height: 20px; /* Smaller drop height */
+  background: linear-gradient(
+    135deg,
+    #ff6b6b 0%,
+    #ff0000 100%
+  ); /* Red gradient */
+  border-radius: 50%; /* Make it circular */
+}
+
+.ecg-heart-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  background-color: #ff6b6b; /* Red background */
+  border-radius: 50%; /* Make it circular */
+  position: relative; /* Set positioning context */
+}
+
+.ecg-heart-icon::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center precisely */
+  width: 20px; /* Line width */
+  height: 2px; /* Line height */
+  background-color: #ffffff; /* White line */
+  border-radius: 1px; /* Rounded ends */
+}
+
+.hospital-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  background-color: #4a90e2; /* Blue background */
+  border-radius: 8px; /* Rounded corners */
+  position: relative; /* Set positioning context */
+}
+
+.hospital-icon::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  top: -5px; /* Position above */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center precisely */
+  width: 0; /* Triangle width */
+  height: 0; /* Triangle height */
+  border-left: 10px solid transparent; /* Transparent left border */
+  border-right: 10px solid transparent; /* Transparent right border */
+  border-bottom: 10px solid #4a90e2; /* Blue bottom border */
+}
+
+.smartphone-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  background-color: #333333; /* Dark background */
+  border-radius: 8px; /* Rounded corners */
+  position: relative; /* Set positioning context */
+}
+
+.smartphone-icon::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center precisely */
+  width: 20px; /* Screen width */
+  height: 12px; /* Screen height */
+  background-color: #4a90e2; /* Blue screen */
+  border-radius: 2px; /* Rounded corners */
+}
+
+.free-service-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon width */
+  background-color: #28a745; /* Green background */
+  border-radius: 50%; /* Make it circular */
+  position: relative; /* Set positioning context */
+}
+
+.free-service-icon::before {
+  content: "$"; /* Dollar sign */
+  position: absolute; /* Position absolutely */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center precisely */
+  color: #ffffff; /* White text */
+  font-size: 20px; /* Font size */
+  font-weight: bold; /* Bold font weight */
+}
+
+.blood-location-icon {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  background-color: #ff6b6b; /* Red background */
+  border-radius: 50%; /* Make it circular */
+  position: relative; /* Set positioning context */
+}
+
+.blood-location-icon::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  top: -5px; /* Position above */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center precisely */
+  width: 0; /* Pin width */
+  height: 0; /* Pin height */
+  border-left: 8px solid transparent; /* Transparent left border */
+  border-right: 8px solid transparent; /* Transparent right border */
+  border-bottom: 12px solid #ff6b6b; /* Red bottom border */
+}
+
+/* Animation for heart beat effect */
+@keyframes heartbeat {
+  0% {
+    transform: rotate(0deg) scale(1);
+  } /* Normal size */
+  50% {
+    transform: rotate(0deg) scale(1.05);
+  } /* Slightly larger */
+  100% {
+    transform: rotate(0deg) scale(1);
+  } /* Back to normal */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  /* Adjust header padding for mobile */
+  .page-header {
+    padding: 15px 20px; /* Reduce padding on mobile */
+  }
+
+  /* Adjust navigation gap for mobile */
+  .main-nav ul {
+    gap: 20px; /* Reduce gap between nav items */
+  }
+
+  /* Adjust hero section layout for mobile */
+  .hero-section {
+    flex-direction: column; /* Stack content vertically */
+    padding: 0 20px; /* Reduce padding */
+    text-align: center; /* Center text */
+  }
+
+  /* Adjust heading size for mobile */
+  .hero-heading {
+    font-size: 48px; /* Smaller font size */
+  }
+
+  /* Adjust graphics size for mobile */
+  .hero-graphics {
+    height: 400px; /* Reduce height */
+  }
+
+  /* Adjust heart graphic size for mobile */
+  .heart-graphic {
+    width: 200px; /* Smaller heart */
+    height: 200px; /* Smaller heart */
+  }
+
+  /* Adjust heartbeat line for mobile */
+  .heartbeat-line {
+    width: 250px; /* Shorter line */
+    left: -125px; /* Adjust position */
+  }
+
+  /* Adjust about section for mobile */
+  .about-section {
+    padding: 60px 20px; /* Reduce padding */
+  }
+
+  /* Adjust about heading for mobile */
+  .about-heading {
+    font-size: 36px; /* Smaller font size */
+  }
+
+  /* Adjust features grid for mobile */
+  .features-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 30px; /* Reduce gap */
+  }
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}

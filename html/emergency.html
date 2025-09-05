@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeLink - Emergency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body { font-family: "Inter", sans-serif; margin: 0; background:#f7f9fb; color:#2c3e50; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+      .bar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
+      .title { font-weight: 700; font-size: 22px; }
+      .btn { display:inline-block; padding: 12px 18px; border-radius: 10px; border: 0; cursor:pointer; font-weight:600; }
+      .btn-primary { background:#e74c3c; color:#fff; }
+      .card { background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); padding:20px; }
+      .hospital { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+      .map { height: 360px; border-radius: 14px; overflow:hidden; margin-top:16px; }
+      .muted { color:#6b7b8d; font-size: 14px; }
+      .row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+      .badge { background:#f0f3f6; color:#2c3e50; border-radius: 999px; padding:6px 10px; font-size:12px; font-weight:600; }
+      .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="bar">
+        <div class="title">Emergency Assistance</div>
+        <a class="btn" href="index.html">Back</a>
+      </div>
+      <div class="card" role="region" aria-label="Nearest hospital">
+        <div class="hospital">
+          <div>
+            <div id="hospitalName" style="font-size:20px; font-weight:700">Grandy Hospital</div>
+            <div id="hospitalAddress" class="muted">Fetching address…</div>
+            <div class="row" style="margin-top:10px">
+              <span class="badge" id="distanceBadge">-- km away</span>
+              <span class="badge" id="etaBadge">ETA -- mins</span>
+            </div>
+          </div>
+          <div class="row">
+            <a id="callBtn" class="btn btn-primary" href="tel:102">Call Ambulance</a>
+            <a id="directionsBtn" class="btn" target="_blank" rel="noopener">Open in Maps</a>
+          </div>
+        </div>
+        <div id="map" class="map" role="region" aria-label="Your location and hospital on map"></div>
+      </div>
+      <p class="muted" style="margin-top:10px">Location and hospital are fetched from API in production. Demo initialization used here.</p>
+    </div>
+
+    <script>
+      // Configuration placeholder: backend will provide nearest hospital from lat/lng
+      window.EMERGENCY_API = window.EMERGENCY_API || { URL: 'http://localhost:8080/api/emergency/nearest' };
+
+      let map, userMarker, hospitalMarker; let userPos, hospital;
+
+      function initMap(position) {
+        const center = { lat: position.coords.latitude, lng: position.coords.longitude };
+        userPos = center;
+        map = new google.maps.Map(document.getElementById('map'), { center, zoom: 14, disableDefaultUI: true });
+        userMarker = new google.maps.Marker({ position: center, map, label: 'You' });
+        renderHospital();
+      }
+
+      async function fetchNearestHospital(lat, lng) {
+        try {
+          const url = `${window.EMERGENCY_API.URL}?lat=${lat}&lng=${lng}`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('Failed to fetch hospital');
+          return await res.json();
+        } catch (e) {
+          console.warn('Using demo hospital (API not available):', e && e.message);
+          return { name: 'Grandy Hospital', phone: '102', address: 'City Center, Main Road', lat: lat + 0.01, lng: lng + 0.01 };
+        }
+      }
+
+      function renderHospital() {
+        (async () => {
+          hospital = await fetchNearestHospital(userPos.lat, userPos.lng);
+          document.getElementById('hospitalName').textContent = hospital.name;
+          document.getElementById('hospitalAddress').textContent = hospital.address || 'Address unavailable';
+          document.getElementById('callBtn').href = `tel:${hospital.phone || '102'}`;
+          const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userPos.lat},${userPos.lng}&destination=${hospital.lat},${hospital.lng}&travelmode=driving`;
+          const dirBtn = document.getElementById('directionsBtn');
+          dirBtn.href = mapsUrl; dirBtn.textContent = 'Get Directions';
+          if (hospitalMarker) hospitalMarker.setMap(null);
+          hospitalMarker = new google.maps.Marker({ position: { lat: hospital.lat, lng: hospital.lng }, map, label: 'Hospital' });
+          fitBounds(userPos, { lat: hospital.lat, lng: hospital.lng });
+          updateDistanceEta();
+          notifyHospital();
+        })();
+      }
+
+      function fitBounds(a, b) {
+        const bounds = new google.maps.LatLngBounds();
+        bounds.extend(a); bounds.extend(b); map.fitBounds(bounds);
+      }
+
+      function updateDistanceEta() {
+        const R = 6371; // km
+        const toRad = (d) => (d * Math.PI) / 180;
+        const dLat = toRad(hospital.lat - userPos.lat); const dLon = toRad(hospital.lng - userPos.lng);
+        const lat1 = toRad(userPos.lat), lat2 = toRad(hospital.lat);
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        const d = R * c; const eta = Math.round((d / 40) * 60); // assume 40km/h
+        document.getElementById('distanceBadge').textContent = `${d.toFixed(1)} km away`;
+        document.getElementById('etaBadge').textContent = `ETA ${eta} mins`;
+      }
+
+      async function notifyHospital() {
+        try {
+          const payload = { userLat: userPos.lat, userLng: userPos.lng, hospitalId: hospital.id || 'demo' };
+          // placeholder POST – in production the backend will notify hospital/ambulance
+          fetch(window.EMERGENCY_API.URL + '/notify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(()=>{});
+        } catch(_) {}
+      }
+
+      function start() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(initMap, () => initMap({ coords: { latitude: 28.6139, longitude: 77.2090 } }));
+        } else {
+          initMap({ coords: { latitude: 28.6139, longitude: 77.2090 } });
+        }
+      }
+      window.startEmergency = start;
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdTF5ulzQW5bbEBz4sMvIWyxIgD254-vA&callback=startEmergency"></script>
+  </body>
+</html>

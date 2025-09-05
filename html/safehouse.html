@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe House Directory - Empowering Differently Abled</title>
+    <link rel="stylesheet" href="../css/safehouse.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neuton:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="logo">
+        <img src="../photo/heart.png" alt="Heart icon" class="image-heart" />
+        <div class="logo-text">
+          <span class="logo-line-1">Life</span>
+          <span class="logo-line-2">Link</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="../html/index.html">Home</a></li>
+          <li><a href="../html/volunteer.html">Volunteer</a></li>
+          <li><a href="../html/request.html">Request</a></li>
+          <li>
+            <a href="../html/safehouse.html" class="active" aria-current="page"
+              >Safe Houses</a
+            >
+          </li>
+          <li><a href="../html/admin-login.html">Admin Panel</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero-section" role="banner">
+        <div class="hero-content">
+          <h1 class="hero-heading">
+            <span class="heading-line-1">Safe House</span>
+            <span class="heading-line-2">Directory</span>
+          </h1>
+          <p class="hero-subtitle">
+            Discover accessible spaces and supportive communities designed for
+            differently-abled individuals. Find your safe haven where inclusion
+            and empowerment thrive.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="totalSafeHouses">0</span>
+              <span class="stat-label">Safe Houses</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Accessible</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-graphics">
+          <div class="accessibility-icons">
+            <div class="icon-wheelchair" aria-hidden="true">
+              <i class="fas fa-wheelchair"></i>
+            </div>
+            <div class="icon-heart" aria-hidden="true">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="icon-hands" aria-hidden="true">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search and Filter Section -->
+      <section class="search-section" role="search">
+        <div class="search-container">
+          <div class="search-box">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search safe houses by name or location..."
+              aria-label="Search safe houses"
+            />
+          </div>
+          <div class="filter-buttons">
+            <button
+              class="filter-btn active"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              <i class="fas fa-globe" aria-hidden="true"></i>
+              All Locations
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="wheelchair"
+              aria-pressed="false"
+            >
+              <i class="fas fa-wheelchair" aria-hidden="true"></i>
+              Wheelchair Access
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="sensory"
+              aria-pressed="false"
+            >
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              Sensory Friendly
+            </button>
+            <button class="filter-btn" data-filter="quiet" aria-pressed="false">
+              <i class="fas fa-volume-mute" aria-hidden="true"></i>
+              Quiet Spaces
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Safe Houses Grid -->
+      <section
+        class="safehouses-section"
+        role="main"
+        aria-label="Safe houses directory"
+      >
+        <div class="section-header">
+          <h2 class="section-title">Available Safe Houses</h2>
+          <p class="section-subtitle">
+            Click on any card to view detailed information
+          </p>
+        </div>
+
+        <div
+          class="safehouses-grid"
+          id="safehousesGrid"
+          role="grid"
+          aria-label="Safe houses grid"
+        >
+          <!-- Cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="loadingState" aria-live="polite">
+          <div class="loading-spinner"></div>
+          <p>Loading safe houses...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div
+          class="empty-state"
+          id="emptyState"
+          style="display: none"
+          aria-live="polite"
+        >
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <h3>No safe houses found</h3>
+          <p>Try adjusting your search criteria or filters</p>
+        </div>
+      </section>
+
+      <!-- Accessibility Features Info -->
+      <section
+        class="accessibility-info"
+        role="complementary"
+        aria-label="Accessibility information"
+      >
+        <div class="info-container">
+          <h3>Accessibility Features Guide</h3>
+          <div class="features-list">
+            <div class="feature-item">
+              <i class="fas fa-wheelchair" aria-hidden="true"></i>
+              <div>
+                <h4>Wheelchair Access</h4>
+                <p>Ramps, wide doorways, and accessible restrooms</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <div>
+                <h4>Visual Support</h4>
+                <p>
+                  Braille signage, high contrast lighting, and clear navigation
+                </p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-volume-mute" aria-hidden="true"></i>
+              <div>
+                <h4>Quiet Spaces</h4>
+                <p>Low-sensory areas for individuals with autism or anxiety</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-hands-helping" aria-hidden="true"></i>
+              <div>
+                <h4>Support Staff</h4>
+                <p>Trained personnel available for assistance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer" role="contentinfo">
+      <div class="footer-content">
+        <p>
+          &copy; 2025 LifeLink. Empowering differently-abled individuals through
+          accessible technology.
+        </p>
+        <div class="footer-links">
+          <a href="#" aria-label="Accessibility statement">Accessibility</a>
+          <a href="#" aria-label="Contact us">Contact</a>
+          <a href="#" aria-label="Privacy policy">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/safehouse.js"></script>
+  </body>
+</html>

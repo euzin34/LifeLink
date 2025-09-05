@@ -1,0 +1,407 @@
+/* Reset default browser styles to ensure consistent appearance across browsers */
+* {
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Set the base font and background for the entire page */
+body {
+  font-family: "Inter", sans-serif; /* Use Inter font as the primary font family */
+  background-color: #f8f9fa; /* Light background color */
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+  overflow-x: hidden; /* Hide horizontal scrollbar to prevent unwanted scrolling */
+}
+
+/* Main container that holds all page content */
+.container {
+  width: 100%; /* Make container take full width of the viewport */
+  min-height: 100vh; /* Ensure container takes at least full viewport height */
+  position: relative; /* Set positioning context for child elements */
+}
+
+/* Header section styling with fixed positioning at the top */
+.page-header {
+  position: fixed; /* Fix header at the top of the viewport */
+  top: 0; /* Position at the very top */
+  left: 0; /* Align to the left edge */
+  right: 0; /* Extend to the right edge */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space logo and navigation apart */
+  align-items: center; /* Vertically center the logo and navigation */
+  padding: 20px 40px; /* Add padding: 20px top/bottom, 40px left/right */
+  z-index: 1000; /* Ensure header appears above other content */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Semi-transparent white background */
+  backdrop-filter: blur(
+    10px
+  ); /* Add blur effect for modern glass-like appearance */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.image-heart {
+  animation: heartbeat 2s ease-in-out infinite;
+  width: 65px;
+  height: 65px;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  right: -25%;
+  top: 0;
+  left: -25%;
+}
+/* Logo container styling */
+.logo {
+  display: flex; /* Use flexbox for logo layout */
+  align-items: center; /* Vertically center logo elements */
+  gap: 15px; /* Space between heart icon and text */
+}
+
+/* Logo text container */
+.logo-text {
+  display: flex; /* Use flexbox for text layout */
+  flex-direction: column; /* Stack text vertically */
+  color: #333333; /* Dark gray text color */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 14px; /* Font size for logo text */
+  line-height: 1.2; /* Tight line spacing */
+  letter-spacing: 1px; /* Add letter spacing for elegance */
+}
+
+/* Navigation menu styling */
+.main-nav ul {
+  display: flex; /* Use flexbox for horizontal navigation */
+  list-style: none; /* Remove default list bullets */
+  gap: 40px; /* Space between navigation items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Individual navigation link styling */
+.main-nav a {
+  color: #333333; /* Dark gray text color for navigation links */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: 600; /* Semi-bold font weight */
+  font-size: 16px; /* Font size for navigation */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+  position: relative; /* Set positioning context for hover effects */
+}
+
+/* Active navigation link styling */
+.main-nav a.active {
+  color: #ff6b6b; /* Red color for active link */
+}
+
+/* Hover effect for navigation links */
+.main-nav a:hover {
+  color: #ff6b6b; /* Red color on hover */
+}
+
+/* Underline effect on hover using pseudo-element */
+.main-nav a::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position absolutely */
+  bottom: -5px; /* Position below the text */
+  left: 0; /* Start from left */
+  width: 0; /* Start with zero width */
+  height: 2px; /* Underline height */
+  background-color: #ff6b6b; /* Red underline color */
+  transition: width 0.3s ease; /* Smooth width transition */
+}
+
+/* Expand underline on hover */
+.main-nav a:hover::after {
+  width: 100%; /* Full width on hover */
+}
+
+/* Main content section */
+.main-content {
+  display: flex; /* Use flexbox for layout */
+  min-height: 100vh; /* Take full viewport height */
+  padding-top: 100px; /* Add top padding to account for fixed header */
+}
+
+/* Left side map section (replaces previous graphics section) */
+.map-section {
+  flex: 1; /* Occupy the left half next to the form */
+  position: relative; /* Establish containing block for children */
+  display: flex; /* Enable easy centering of the map container */
+  align-items: stretch; /* Make the child fill vertical space */
+  justify-content: center; /* Horizontally center map if narrower */
+  background-color: #f3f4f6; /* Calm neutral background while map loads */
+  min-height: 600px; /* Ensure a comfortable height on desktops */
+}
+
+/* The map div should expand to available space */
+#requestMap {
+  flex: 1; /* Make the map fill the container */
+  height: 100%; /* Required for Google Maps to render */
+  border: 0; /* Remove any default border */
+  outline: none; /* Keep visuals clean */
+  border-radius: 0; /* Map is edge-to-edge in its column */
+}
+
+.image {
+  animation: heartbeat 2s ease-in-out infinite;
+  height: 210px;
+  gap: 15px;
+  left: 25%; /* Position from left */
+  top: 80%; /* Center vertically */
+  position: absolute; /* Position absolutely */
+}
+
+.image-h {
+  animation: heartbeat 2s ease-in-out infinite;
+  width: 350px;
+  height: 350px;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  right: -25%;
+  top: 0;
+  left: -25%;
+}
+
+/* Right side form section */
+.form-section {
+  flex: 1; /* Take available space */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center form */
+  justify-content: center; /* Horizontally center form */
+  padding: 40px; /* Add padding around form */
+  background-color: #ffffff; /* White background */
+}
+
+/* Form container */
+.form-container {
+  width: 100%; /* Take full width */
+  max-width: 500px; /* Limit maximum width */
+  background-color: #ffffff; /* White background */
+  padding: 40px; /* Add padding inside container */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+/* Form header */
+.form-header {
+  text-align: center; /* Center text */
+  margin-bottom: 40px; /* Space below header */
+}
+
+/* Form title */
+.form-title {
+  font-family: "Neuton", serif; /* Use Neuton font */
+  font-size: 36px; /* Large font size */
+  font-weight: 700; /* Bold font weight */
+  color: #333333; /* Dark gray text color */
+  margin-bottom: 10px; /* Space below title */
+  letter-spacing: 2px; /* Add letter spacing */
+}
+
+/* Form underline */
+.form-underline {
+  width: 60px; /* Underline width */
+  height: 4px; /* Underline height */
+  background-color: #ff6b6b; /* Red color for request page */
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 2px; /* Rounded ends */
+}
+
+/* Form styling */
+.request-form {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 20px; /* Space between form groups */
+}
+
+/* Form group container */
+.form-group {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack label and input vertically */
+  gap: 8px; /* Space between label and input */
+}
+
+/* Form label */
+.form-label {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 14px; /* Medium font size */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333333; /* Dark gray text color */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+/* Form input styling */
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 15px; /* Add padding inside input */
+  border: 2px solid #e9ecef; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 400; /* Regular font weight */
+  color: #333333; /* Dark gray text color */
+  background-color: #ffffff; /* White background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Focus state for form inputs */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none; /* Remove default outline */
+  border-color: #ff6b6b; /* Red border on focus */
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1); /* Red glow on focus */
+}
+
+/* Placeholder styling */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #999999; /* Light gray placeholder text */
+}
+
+/* Textarea specific styling */
+.form-textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Minimum height */
+}
+
+/* Checkbox group styling */
+.checkbox-group {
+  flex-direction: row; /* Stack horizontally */
+  align-items: flex-start; /* Align to top */
+  gap: 12px; /* Space between checkbox and label */
+}
+
+/* Checkbox styling */
+.form-checkbox {
+  width: 20px; /* Checkbox width */
+  height: 20px; /* Checkbox height */
+  margin-top: 2px; /* Small top margin */
+  accent-color: #ff6b6b; /* Red accent color */
+}
+
+/* Checkbox label */
+.checkbox-label {
+  font-size: 14px; /* Smaller font size */
+  font-weight: 400; /* Regular font weight */
+  text-transform: none; /* No uppercase */
+  letter-spacing: normal; /* Normal letter spacing */
+  line-height: 1.4; /* Comfortable line spacing */
+  color: #666666; /* Medium gray text color */
+}
+
+/* Submit button styling */
+.submit-button {
+  background: linear-gradient(
+    135deg,
+    #ff6b6b 0%,
+    #ff0000 100%
+  ); /* Red gradient background */
+  color: #ffffff; /* White text color */
+  border: none; /* No border */
+  border-radius: 25px; /* Rounded corners */
+  padding: 18px 40px; /* Padding: 18px top/bottom, 40px left/right */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: 16px; /* Medium font size */
+  font-weight: 600; /* Semi-bold font weight */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 2px; /* Add letter spacing */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  margin-top: 20px; /* Space above button */
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+  transform: translateY(-2px); /* Slight upward movement */
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3); /* Red shadow on hover */
+}
+
+/* Active state for submit button */
+.submit-button:active {
+  transform: translateY(0); /* Return to original position when clicked */
+}
+
+/* Animation for heart beat effect */
+@keyframes heartbeat {
+  0% {
+    transform: rotate(0deg) scale(1);
+  } /* Normal size */
+  50% {
+    transform: rotate(0deg) scale(1.05);
+  } /* Slightly larger */
+  100% {
+    transform: rotate(0deg) scale(1);
+  } /* Back to normal */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  /* Adjust header padding for mobile */
+  .page-header {
+    padding: 15px 20px; /* Reduce padding on mobile */
+  }
+
+  /* Adjust navigation gap for mobile */
+  .main-nav ul {
+    gap: 20px; /* Reduce gap between nav items */
+  }
+
+  /* Adjust main content layout for mobile */
+  .main-content {
+    flex-direction: column; /* Stack sections vertically */
+  }
+
+  /* Adjust map section for mobile */
+  .map-section {
+    min-height: 280px; /* Smaller but still usable map area */
+    padding: 0; /* Map should be edge-to-edge */
+  }
+
+  /* Adjust blood bag size for mobile */
+  .blood-bag-graphic {
+    width: 100px; /* Smaller blood bag */
+    height: 150px; /* Smaller blood bag */
+    left: 10%; /* Adjust position */
+  }
+
+  /* Adjust heart size for mobile */
+  .heart-graphic {
+    width: 120px; /* Smaller heart */
+    height: 120px; /* Smaller heart */
+    right: 10%; /* Adjust position */
+  }
+
+  /* Adjust connection line for mobile */
+  .connection-line {
+    width: 200px; /* Shorter line */
+  }
+
+  /* Adjust form section for mobile */
+  .form-section {
+    padding: 20px; /* Reduce padding */
+  }
+
+  /* Adjust form container for mobile */
+  .form-container {
+    padding: 30px 20px; /* Reduce padding */
+  }
+
+  /* Adjust form title for mobile */
+  .form-title {
+    font-size: 28px; /* Smaller font size */
+  }
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}

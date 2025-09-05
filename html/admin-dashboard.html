@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for proper character encoding and responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link to the main stylesheet for styling -->
+    <link rel="stylesheet" href="../css/admin-dashboard.css" />
+
+    <!-- Google Fonts import for the elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neuton:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js CDN for creating interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Firebase SDKs and project init for auth guard -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="../js/firebase-init.js"></script>
+
+    <!-- Page title that appears in browser tab -->
+    <title>LifeLink - Admin Dashboard</title>
+  </head>
+
+  <body>
+    <!-- Main container that holds all the page content -->
+    <main class="container">
+      <!-- Sidebar navigation -->
+      <aside class="sidebar">
+        <!-- Logo container with heart icon and text -->
+        <div class="sidebar-logo">
+          <img
+            src="../photo/empworing-removebg-preview.png"
+            alt="Logo"
+            class="image-heart"
+          />
+          <span class="logo-text">LifeLink</span>
+        </div>
+
+        <!-- Navigation menu -->
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Supporters</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">🏥</span>
+                <span class="nav-text">Beneficiaries</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">🤝</span>
+                <span class="nav-text">Supports</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Requests</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Resources</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">🍽️</span>
+                <span class="nav-text">Support Guide</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="#" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Admin Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main content area -->
+      <div class="main-content">
+        <!-- Top header with branding -->
+        <header class="top-header">
+          <!-- Logout button -->
+          <div class="logout-container">
+            <button class="logout-button" id="logoutButton">Logout</button>
+          </div>
+          <div class="header-brand">
+            <span class="brand-icon">♿</span>
+            <span class="brand-text">LifeLink</span>
+          </div>
+        </header>
+
+        <!-- Dashboard content -->
+        <section class="dashboard-content">
+          <!-- Dashboard header -->
+          <div class="dashboard-header">
+            <h1 class="dashboard-title">Accessibility Support Dashboard</h1>
+            <p class="dashboard-subtitle">
+              Monitor assistance provided, requests, and resource statistics
+            </p>
+          </div>
+
+          <!-- Statistics cards -->
+          <div class="stats-grid">
+            <!-- Total Donations Card -->
+            <div class="stat-card">
+              <div class="stat-icon donation-icon">🩸</div>
+              <div class="stat-content">
+                <h3 class="stat-title">Total Supports</h3>
+                <p class="stat-number" id="totalDonations">1,247</p>
+                <p class="stat-change positive">+12% from last month</p>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card -->
+            <div class="stat-card">
+              <div class="stat-icon request-icon">📋</div>
+              <div class="stat-content">
+                <h3 class="stat-title">Open Requests</h3>
+                <p class="stat-number" id="pendingRequests">23</p>
+                <p class="stat-change negative">+5 from yesterday</p>
+              </div>
+            </div>
+
+            <!-- Available Blood Card -->
+            <div class="stat-card">
+              <div class="stat-icon available-icon">💉</div>
+              <div class="stat-content">
+                <h3 class="stat-title">Available Resources</h3>
+                <p class="stat-number" id="availableBlood">456</p>
+                <p class="stat-change positive">+8% from last week</p>
+              </div>
+            </div>
+
+            <!-- Emergency Requests Card -->
+            <div class="stat-card">
+              <div class="stat-icon emergency-icon">🚨</div>
+              <div class="stat-content">
+                <h3 class="stat-title">Urgent Requests</h3>
+                <p class="stat-number" id="emergencyRequests">7</p>
+                <p class="stat-change negative">+2 from today</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts section -->
+          <div class="charts-section">
+            <!-- Blood Type Distribution Chart -->
+            <div class="chart-container">
+              <div class="chart-header">
+                <h2 class="chart-title">Assistance Categories</h2>
+                <p class="chart-subtitle">Distribution by support type</p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="bloodTypeChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Monthly Donations Chart -->
+            <div class="chart-container">
+              <div class="chart-header">
+                <h2 class="chart-title">Monthly Support Trend</h2>
+                <p class="chart-subtitle">Assistance over the last 6 months</p>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="monthlyDonationsChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blood Inventory Table -->
+          <div class="inventory-section">
+            <div class="section-header">
+              <h2 class="section-title">Resource Status</h2>
+              <button class="refresh-button" id="refreshButton">
+                🔄 Refresh
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="inventory-table">
+                <thead>
+                  <tr>
+                    <th>Resource</th>
+                    <th>Available</th>
+                    <th>In Use</th>
+                    <th>Pending</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                  <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="activity-section">
+            <div class="section-header">
+              <h2 class="section-title">Recent Activity</h2>
+              <button class="view-all-button">View All</button>
+            </div>
+
+            <div class="activity-list" id="activityList">
+              <!-- Activity items will be populated by JavaScript -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- JavaScript modules for interactive functionality -->
+    <script src="../js/dashboard-charts.js"></script>
+    <script src="../js/dashboard-tables.js"></script>
+    <script src="../js/dashboard-sections.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/admin-dashboard.js"></script>
+  </body>
+</html>

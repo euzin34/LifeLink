@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for proper character encoding and responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link to the main stylesheet for styling -->
+    <link rel="stylesheet" href="../css/admin-login.css" />
+
+    <!-- Google Fonts import for the elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neuton:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Page title that appears in browser tab -->
+    <title>LifeLink - Admin Login</title>
+  </head>
+
+  <body>
+    <!-- Main container that holds all the page content -->
+    <main class="container">
+      <!-- Header section with logo and navigation -->
+      <header class="page-header">
+        <!-- Logo container with heart icon and text -->
+        <div class="logo">
+          <img
+            src="../photo/empworing-removebg-preview.png"
+            alt="Logo"
+            class="image-heart"
+          />
+          <div class="logo-text">
+            <span class="logo-line-1">Life</span>
+            <span class="logo-line-2">Link</span>
+          </div>
+        </div>
+
+        <!-- Navigation menu with main site links -->
+        <nav class="main-nav">
+          <!-- Unordered list for navigation items -->
+          <ul>
+            <!-- About Us link -->
+            <li><a href="index.html#about-section">About Us</a></li>
+            <li><a href="volunteer.html">Join</a></li>
+            <li><a href="request.html">Request Help</a></li>
+            <li><a href="admin-login.html" class="active">Admin</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main content section -->
+      <section class="main-content">
+        <!-- Left side graphics -->
+        <div class="graphics-section">
+          <!-- Admin panel illustration -->
+          <div class="admin-illustration">
+            <!-- Dashboard icon -->
+            <div class="dashboard-icon"></div>
+            <!-- Blood drops -->
+            <div class="blood-drops"></div>
+            <!-- Statistics bars -->
+            <div class="stats-bars"></div>
+          </div>
+        </div>
+
+        <!-- Right side login form -->
+        <div class="form-section">
+          <!-- Login container -->
+          <div class="login-container">
+            <!-- Login header -->
+            <div class="login-header">
+              <h1 class="login-title">Admin Login</h1>
+              <div class="login-underline"></div>
+              <p class="login-subtitle">Access Accessibility Support System</p>
+            </div>
+
+            <!-- Login form -->
+            <form class="admin-login-form" id="adminLoginForm">
+              <!-- Admin ID input -->
+              <div class="form-group">
+                <label for="adminId" class="form-label">Admin ID</label>
+                <input
+                  type="text"
+                  id="adminId"
+                  name="adminId"
+                  class="form-input"
+                  placeholder="Enter your admin ID"
+                  required
+                />
+              </div>
+
+              <!-- Password input -->
+              <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="password-input-container">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-input password-input"
+                    placeholder="Enter your password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    id="passwordToggle"
+                  >
+                    <span class="eye-icon">👁️</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Remember me checkbox -->
+              <div class="form-group checkbox-group">
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  name="rememberMe"
+                  class="form-checkbox"
+                />
+                <label for="rememberMe" class="checkbox-label">
+                  Remember me for 30 days
+                </label>
+              </div>
+
+              <!-- Login button -->
+              <button type="submit" class="login-button">
+                Login to Admin Panel
+              </button>
+            </form>
+
+            <!-- Security notice -->
+            <div class="security-notice">
+              <div class="security-icon">🔒</div>
+              <p>
+                This is a secure admin area. Unauthorized access is prohibited.
+              </p>
+            </div>
+
+            <!-- Back to home link -->
+            <div class="back-link">
+              <a href="index.html">← Back to Home</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Firebase SDKs (Compat version for non-module scripts) -->
+    <!-- Core Firebase App library -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <!-- Firebase Auth library -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <!--
+      Firebase initialization for this project.
+      Edit firebase-init.js to paste your Firebase config (apiKey, authDomain, etc).
+      This file sets up a global `firebaseAuth` instance used by admin-login.js.
+    -->
+    <script src="../js/firebase-init.js"></script>
+
+    <!-- JavaScript file for interactive functionality -->
+    <script src="../js/admin-login.js"></script>
+  </body>
+</html>

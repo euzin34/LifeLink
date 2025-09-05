@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/request.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neuton:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>LifeLink - Request Assistance</title>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <div class="logo">
+          <img
+            src="../photo/empworing2-removebg-preview.png"
+            alt="Logo"
+            class="image-heart"
+          />
+          <div class="logo-text">
+            <span class="logo-line-1">Life</span>
+            <span class="logo-line-2">Link</span>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html#about-section">About Us</a></li>
+            <li><a href="volunteer.html">Join</a></li>
+            <li><a href="request.html" class="active">Request Help</a></li>
+            <li><a href="admin-login.html">Admin</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="main-content">
+        <div class="map-section">
+          <div id="requestMap" style="min-height: 320px; width: 100%"></div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-container">
+            <div class="form-header">
+              <h1 class="form-title">Request Assistance</h1>
+              <div class="form-underline"></div>
+            </div>
+
+            <form class="request-form" id="requestForm">
+              <div class="form-group">
+                <label for="patientName" class="form-label">Patient Name</label>
+                <input
+                  type="text"
+                  id="patientName"
+                  name="patientName"
+                  class="form-input"
+                  placeholder="Enter patient's full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="requesterName" class="form-label"
+                  >Requester Name</label
+                >
+                <input
+                  type="text"
+                  id="requesterName"
+                  name="requesterName"
+                  class="form-input"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="bloodType" class="form-label"
+                  >Type of Assistance</label
+                >
+                <select
+                  id="bloodType"
+                  name="bloodType"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Select assistance type</option>
+                  <option value="mobility">Mobility Support</option>
+                  <option value="visual">Visual Assistance</option>
+                  <option value="hearing">Hearing Assistance</option>
+                  <option value="sensory">Sensory-Friendly Support</option>
+                  <option value="transport">Transport Assistance</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="units" class="form-label">People Needed</label>
+                <input
+                  type="number"
+                  id="units"
+                  name="units"
+                  class="form-input"
+                  placeholder="Number of volunteers needed"
+                  min="1"
+                  max="10"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="urgency" class="form-label">Urgency</label>
+                <select
+                  id="urgency"
+                  name="urgency"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Select urgency</option>
+                  <option value="normal">Normal (Within 1 week)</option>
+                  <option value="urgent">Urgent (Within 3 days)</option>
+                  <option value="emergency">Emergency (Within 24 hours)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="hospital" class="form-label">Hospital/Clinic</label>
+                <input
+                  type="text"
+                  id="hospital"
+                  name="hospital"
+                  class="form-input"
+                  placeholder="Enter hospital or clinic name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="address" class="form-label">Hospital Address</label>
+                <textarea
+                  id="address"
+                  name="address"
+                  class="form-textarea"
+                  placeholder="Enter complete hospital address"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="reason" class="form-label"
+                  >Describe Your Need</label
+                >
+                <textarea
+                  id="reason"
+                  name="reason"
+                  class="form-textarea"
+                  placeholder="Brief description of the assistance required"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="requiredDate" class="form-label">Required By</label>
+                <input
+                  type="date"
+                  id="requiredDate"
+                  name="requiredDate"
+                  class="form-input"
+                  required
+                />
+              </div>
+
+              <div class="form-group checkbox-group">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  class="form-checkbox"
+                  required
+                />
+                <label for="terms" class="checkbox-label">
+                  I confirm that this is a genuine blood request and I agree to
+                  the terms and conditions
+                </label>
+              </div>
+
+              <button type="submit" class="submit-button">
+                Submit Assistance Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/request.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdTF5ulzQW5bbEBz4sMvIWyxIgD254-vA&callback=initRequestMap"
+      async
+      defer
+    ></script>
+  </body>
+</html>
